@@ -5,15 +5,20 @@
 </template>
 
 <script>
+  import Store from '../assets/Store'
+
   export default {
-    name: 'Sub',
+    name: 'DetailSub',
+    routePath: '/detailSub/',
     data() {
       return {
         movieName: 'Waiting...'
       }
     },
     mounted() {
-      var movie = this.$route.query['movie']
+      var path = this.$route.path
+      var index = path.substring(11, path.length)
+      var movie = Store.state.movies[index]
       this.movieName = movie.title
     }
   }

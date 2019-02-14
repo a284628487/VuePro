@@ -5,6 +5,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Home from '@/components/Home'
 import Movie from '@/components/Movie'
 import Sub from '@/components/Sub'
+import DetailSub from '@/components/DetailSub'
 
 Vue.use(Router)
 
@@ -24,6 +25,11 @@ export default new Router({
       path: '/sub',
       name: 'Sub',
       component: Sub
+    },
+    {
+      path: '/detailSub/:index',
+      name: 'DetailSub',
+      component: DetailSub
     }
   ]
 })
