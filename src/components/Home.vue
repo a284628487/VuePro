@@ -1,6 +1,7 @@
 <template>
   <div id="main">
     <div @click="divClick" :style="{color: authorColor}"> Written by {{ author }}</div>
+    <div v-model="xxx"><span>{{$t('home.clickTime')}}</span>{{xxx}}</div>
     <ul>
       <li v-for="(item, index) in users" :key="'userKey' + index"
           v-bind:class='{single: index%2===0, double: index%2 === 1}'>{{item}}
@@ -10,12 +11,14 @@
       <span>{{progressText}}</span><span v-if="progress==100">&nbsp;&nbsp;OK</span>
     </div>
     <div>
-      <router-link to="/movie">Movie</router-link>
+      <router-link to="/movie">{{movie}}</router-link>
     </div>
   </div>
 </template>
 
 <script type="text/javascript">
+  import {mapGetters, mapState} from 'vuex'
+
   export default {
     name: 'Home',
     props: {
@@ -31,7 +34,9 @@
     data() {
       return {
         progress: 0,
-        authorColor: '#ff4400'
+        authorColor: '#ff4400',
+        times: 0,
+        movie: this.$t('home.movie')
       }
     },
     methods: {
@@ -42,20 +47,22 @@
             this.tick()
           }, 16)
         } else {
-          this.users.push('190212')
-          this.users.push('190213')
+          this.users.push('190212-')
+          this.users.push('190213-')
         }
       },
       divClick() {
-        alert('ClickMe')
+        this.times++
+        this.xxx = this.times + ''
       }
     },
     created() {
-      console.log('main#created')
+      console.log('Home#created')
     },
     mounted() {
       this.tick()
-      console.log('main#mounted')
+      console.log('Home#mounted')
+      this.times = parseInt(this.xxx)
     },
     watch: {
       progress(newProgress) {
@@ -66,8 +73,19 @@
     },
     computed: {
       progressText() {
-        return this.progress + '%'
+        return this.progress + ''
+      },
+      xxx: {
+        get() {
+          return this.$store.state.xxx
+        },
+        set(newValue) {
+          this.$store.commit('setXxx', newValue)
+        }
       }
+      // ...mapGetters([
+      //   'xxx'
+      // ])
     }
   }
 </script>
