@@ -20,6 +20,12 @@
       var index = path.substring(11, path.length)
       var movie = Store.state.movies[index]
       this.movieName = movie.title
+    },
+    created() {
+      console.log('DetailSub#created')
+    },
+    destroyed() {
+      console.log('DetailSub#destroyed')
     }
   }
 </script>

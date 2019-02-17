@@ -1,0 +1,12 @@
+## 页面状态保持
+
+1. 数据保存
+https://www.jianshu.com/p/d1ccef6d8c58
+keep-alive还有一些参数 include、exclude、max，具体用处就是来过滤要缓存的组件以及缓存组件的数量，可以用来优化性能。
+
+https://blog.csdn.net/u013144287/article/details/78985687
+
+2. 滚动位置保存
+https://www.cnblogs.com/xyyt/p/8663701.html
+
+

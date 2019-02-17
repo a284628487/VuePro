@@ -1,8 +1,8 @@
 <template>
   <div id="movie">
-    <h4 style="color: #20A0FF">豆瓣电影排行榜</h4>
+    <h4 style="color: #20A0FF">{{$t('movie.movieRank')}}</h4>
     <div class="box-card">
-      <div v-for="(movie, index) in movies" class="text item">
+      <div v-for="(movie, index) in movies" class="text item" :style="{height: '3rem'}">
         <router-link v-if="index%2 === 0" :to="{path:'/sub', query:{movie: movie}}">
           {{movie.title}}
         </router-link>

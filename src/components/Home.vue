@@ -35,13 +35,12 @@
       return {
         progress: 0,
         authorColor: '#ff4400',
-        times: 0,
-        movie: this.$t('home.movie')
+        times: 0
       }
     },
     methods: {
       tick() {
-        this.progress += 1
+        this.progress += 5
         if (this.progress < 100) {
           setTimeout(() => {
             this.tick()
@@ -64,9 +63,12 @@
       console.log('Home#mounted')
       this.times = parseInt(this.xxx)
     },
+    activated() {
+      console.log('Home#activated')
+    },
     watch: {
       progress(newProgress) {
-        if (newProgress % 20 == 0) {
+        if (newProgress % 50 == 0) {
           console.log('progressChanged: ' + newProgress)
         }
       }
@@ -74,6 +76,9 @@
     computed: {
       progressText() {
         return this.progress + ''
+      },
+      movie() {
+        return this.$t('home.movie')
       },
       xxx: {
         get() {
