@@ -53,15 +53,23 @@
       divClick() {
         this.times++
         this.xxx = this.times + ''
+        this.$cookies.set('clickTimes', this.times)
       }
     },
     created() {
-      console.log('Home#created')
+      const times = this.$cookies.get('clickTimes')
+      console.log('Home#created' )
+      if(times) {
+        this.xxx = parseInt(times)
+      }
+    },
+    destroyed() {
+      this.$cookies.set('clickTimes', this.times)
     },
     mounted() {
       this.tick()
       console.log('Home#mounted')
-      this.times = parseInt(this.xxx)
+      this.times = this.xxx
     },
     activated() {
       console.log('Home#activated')

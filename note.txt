@@ -9,4 +9,7 @@ https://blog.csdn.net/u013144287/article/details/78985687
 2. 滚动位置保存
 https://www.cnblogs.com/xyyt/p/8663701.html
 
-
+3. cookie
+this.$cookies.remove(keyName)
+this.$cookies.isKey(keyName)
+this.$cookies.keys()
