@@ -2,16 +2,19 @@
   <div>
     <div>{{currentLang}}</div>
     <div @click="switchLang">{{$t('main.switchLang')}}</div>
-    <h4>{{$t('home.movie')}} : {{movieName}}</h4>
+    <h4>{{$t('home.movie')}} : {{movieObject.title}}</h4>
+    <v-MovieItem :movie="movieObject"></v-MovieItem>
   </div>
 </template>
 
 <script>
+  import MovieItem from './MovieItem'
+
   export default {
     name: 'Sub',
     data() {
       return {
-        movieName: 'Waiting...'
+        movieObject: {}
       }
     },
     methods: {
@@ -25,8 +28,8 @@
       }
     },
     mounted() {
-      var movie = this.$route.query['movie']
-      this.movieName = movie.title
+      let movie = this.$route.query['movie']
+      this.movieObject = movie
     },
     created() {
       console.log('Sub#created')
@@ -38,6 +41,9 @@
       currentLang() {
         return this.$t('main.currentLang')
       }
+    },
+    components: {
+      'v-MovieItem': MovieItem
     }
   }
 </script>

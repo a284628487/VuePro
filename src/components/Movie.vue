@@ -2,12 +2,12 @@
   <div id="movie">
     <h4 style="color: #20A0FF">{{$t('movie.movieRank')}}</h4>
     <div class="box-card">
-      <div v-for="(movie, index) in movies" class="text item" :style="{height: '3rem'}">
+      <div v-for="(movie, index) in movies" class="text item" :style="{height: '12rem'}">
         <router-link v-if="index%2 === 0" :to="{path:'/sub', query:{movie: movie}}">
-          {{movie.title}}
+          <v-MovieItem :movie="movie"></v-MovieItem>
         </router-link>
         <router-link v-if="index%2 === 1" :to="{path:'/detailSub/' + index}">
-          {{movie.title}}
+          <v-MovieItem :movie="movie"></v-MovieItem>
         </router-link>
       </div>
     </div>
@@ -16,6 +16,7 @@
 
 <script>
   import Store from '../assets/Store'
+  import MovieItem from './MovieItem'
 
   export default {
     name: 'Movie',
@@ -50,7 +51,9 @@
     destroyed() {
       console.log('Movie#Destroyed')
     },
-    components: {}
+    components: {
+      'v-MovieItem': MovieItem
+    }
   }
 </script>
 
