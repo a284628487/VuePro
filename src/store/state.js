@@ -1,4 +1,4 @@
 const state = {
-  xxx: 0,
+  clickTimes: 0
 }
 export default state

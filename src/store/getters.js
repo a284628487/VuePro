@@ -1,1 +1,1 @@
-export const xxx = state => state.xxx
+export const clickTimes = state => state.clickTimes

@@ -3,9 +3,9 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 
 import Home from '@/components/Home'
-import Movie from '@/components/Movie'
-import Sub from '@/components/Sub'
-import DetailSub from '@/components/DetailSub'
+import MovieList from '@/components/MovieList'
+import MovieName from '@/components/MovieName'
+import MovieContainer from '@/components/MovieContainer'
 
 Vue.use(Router)
 
@@ -17,19 +17,24 @@ export default new Router({
       component: Home
     },
     {
-      path: '/movie',
-      name: 'Movie',
-      component: Movie
+      path: '/movielist',
+      name: 'MovieList',
+      component: MovieList
     },
     {
-      path: '/sub',
-      name: 'Sub',
-      component: Sub
+      path: '/movieInformation',
+      name: 'MovieContainer',
+      component: MovieContainer
     },
     {
-      path: '/detailSub/:index',
-      name: 'DetailSub',
-      component: DetailSub
+      path: '/movieName/:index',
+      name: 'MovieName',
+      component: MovieName
+    },
+    {
+      path: '/helloworld',
+      name: 'HelloWorld',
+      component: HelloWorld
     }
   ]
 })

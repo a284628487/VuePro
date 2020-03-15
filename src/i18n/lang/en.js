@@ -1,7 +1,9 @@
 module.exports = {
   home: {
     clickTime: 'ClickTimes: ',
-    movie: 'Movie'
+    movie: 'Movie',
+    userList: 'UserList',
+    loadProgress: 'LoadProgress: '
   },
   movie: {
     movieRank: 'Movie-Rank@DouBan'

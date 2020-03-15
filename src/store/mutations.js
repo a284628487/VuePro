@@ -1,5 +1,5 @@
 export default {
-  setXxx (state, value) {
-    state.xxx = value
+  setClickTimes (state, value) {
+    state.clickTimes = value
   }
 }

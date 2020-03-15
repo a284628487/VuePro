@@ -1,106 +1,113 @@
 <template>
   <div id="main">
     <div @click="divClick" :style="{color: authorColor}"> Written by {{ author }}</div>
-    <div v-model="xxx"><span>{{$t('home.clickTime')}}</span>{{xxx}}</div>
+    <div><span>{{$t('home.clickTime')}}</span>{{clickTimes}}</div>
+<!--    <div v-model="clickTimes"><span>{{$t('home.clickTime')}}</span>{{clickTimes}}</div>-->
+    <h3>{{$t('home.userList')}}</h3>
     <ul>
       <li v-for="(item, index) in users" :key="'userKey' + index"
           v-bind:class='{single: index%2===0, double: index%2 === 1}'>{{item}}
       </li>
     </ul>
     <div :class="(progress>=100)?'full':'not-full'">
-      <span>{{progressText}}</span><span v-if="progress==100">&nbsp;&nbsp;OK</span>
+      <span>{{$t('home.loadProgress')}}{{progressText}}</span>
+      <span v-if="progress === 100">&nbsp;Done</span>
+      <span v-if="progress < 100">&nbsp;...</span>
     </div>
+    <br/>
     <div>
-      <router-link to="/movie">{{movie}}</router-link>
+      <router-link to="/movielist">{{movie}}</router-link>
     </div>
   </div>
 </template>
 
 <script type="text/javascript">
-  import {mapGetters, mapState} from 'vuex'
+// import {mapGetters, mapState} from 'vuex'
 
-  export default {
-    name: 'Home',
-    props: {
-      'users': {
-        type: Array, // String|Boolean|Object
-        default: () => []
-      },
-      'author': {
-        type: String,
-        default: 'CCf'
-      }
+export default {
+  name: 'Home',
+  props: {
+    'users': {
+      type: Array, // String|Boolean|Object
+      default: () => []
     },
-    data() {
-      return {
-        progress: 0,
-        authorColor: '#ff4400',
-        times: 0
-      }
-    },
-    methods: {
-      tick() {
-        this.progress += 5
-        if (this.progress < 100) {
-          setTimeout(() => {
-            this.tick()
-          }, 16)
-        } else {
-          this.users.push('190212-')
-          this.users.push('190213-')
-        }
-      },
-      divClick() {
-        this.times++
-        this.xxx = this.times + ''
-        this.$cookies.set('clickTimes', this.times)
-      }
-    },
-    created() {
-      const times = this.$cookies.get('clickTimes')
-      console.log('Home#created' )
-      if(times) {
-        this.xxx = parseInt(times)
-      }
-    },
-    destroyed() {
-      this.$cookies.set('clickTimes', this.times)
-    },
-    mounted() {
-      this.tick()
-      console.log('Home#mounted')
-      this.times = this.xxx
-    },
-    activated() {
-      console.log('Home#activated')
-    },
-    watch: {
-      progress(newProgress) {
-        if (newProgress % 50 == 0) {
-          console.log('progressChanged: ' + newProgress)
-        }
-      }
-    },
-    computed: {
-      progressText() {
-        return this.progress + ''
-      },
-      movie() {
-        return this.$t('home.movie')
-      },
-      xxx: {
-        get() {
-          return this.$store.state.xxx
-        },
-        set(newValue) {
-          this.$store.commit('setXxx', newValue)
-        }
-      }
-      // ...mapGetters([
-      //   'xxx'
-      // ])
+    'author': {
+      type: String,
+      default: 'CCf'
     }
+  },
+  data () {
+    return {
+      progress: 0,
+      authorColor: '#ff4400',
+      times: 0
+    }
+  },
+  methods: {
+    tick () {
+      this.progress += 5
+      if (this.progress < 100) {
+        setTimeout(() => {
+          this.tick()
+        }, 80)
+      } else {
+        this.users.push('TW-ccf')
+        this.users.push('TW-yyn')
+        this.users.push('TW-cjyn')
+        this.users.push('TW-czn')
+      }
+    },
+    divClick () {
+      this.times++
+      this.clickTimes = this.times + ''
+      this.$cookies.set('clickTimes', this.times)
+    }
+  },
+  created () {
+    const times = this.$cookies.get('clickTimes')
+    console.log('Home#created')
+    if (times) {
+      this.clickTimes = parseInt(times)
+    }
+  },
+  destroyed () {
+    this.$cookies.set('clickTimes', this.times)
+  },
+  mounted () {
+    this.tick()
+    console.log('Home#mounted')
+    this.times = this.clickTimes
+  },
+  activated () {
+    console.log('Home#activated')
+  },
+  watch: {
+    progress (newProgress) {
+      if (newProgress % 50 === 0) {
+        console.log('progressChanged: ' + newProgress)
+      }
+    }
+  },
+  computed: {
+    progressText () {
+      return this.progress + ''
+    },
+    movie () {
+      return this.$t('home.movie')
+    },
+    clickTimes: {
+      get () {
+        return this.$store.state.clickTimes
+      },
+      set (newValue) {
+        this.$store.commit('setClickTimes', newValue)
+      }
+    }
+    // ...mapGetters([
+    //   'clickTimes'
+    // ])
   }
+}
 </script>
 
 <style scoped>
@@ -113,7 +120,7 @@
   }
 
   .single {
-    color: cyan;
+    color: coral;
   }
 
   .double {

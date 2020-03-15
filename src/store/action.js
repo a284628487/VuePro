@@ -1,5 +1,5 @@
-export default{
-  setXxx ({commit}, value) {
-    commit('setXxx', value)
+export default {
+  setClickTimes ({commit}, value) {
+    commit('setClickTimes', value)
   }
 }

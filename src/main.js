@@ -9,8 +9,8 @@ import VueI18n from 'vue-i18n'
 import VueCookies from 'vue-cookies'
 
 Vue.config.productionTip = false
-//开启debug模式
-Vue.config.debug = true;
+// 开启debug模式
+Vue.config.debug = true
 
 Vue.use(VueCookies)
 Vue.use(VueResource)
