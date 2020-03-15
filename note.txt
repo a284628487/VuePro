@@ -14,3 +14,7 @@ https://www.jb51.net/article/153064.htm
 this.$cookies.remove(keyName)
 this.$cookies.isKey(keyName)
 this.$cookies.keys()
+
+4. refs & ref
+https://www.cnblogs.com/xumqfaith/p/7743387.html
+https://blog.csdn.net/qq_35410544/article/details/83621574

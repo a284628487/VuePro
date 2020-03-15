@@ -23,6 +23,11 @@ export default {
   },
   mounted () {
     // console.log(this.movie.title)
+  },
+  methods: {
+    testMethod () {
+      console.log('MovieItem#testMethod')
+    }
   }
 }
 </script>
