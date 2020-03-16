@@ -16,7 +16,7 @@
     </div>
     <br/>
     <div>
-      <router-link to="/movielist">{{movie}}</router-link>
+      <router-link to="/movielist">{{movie}}<span class="iconfont icon-down"></span></router-link>
     </div>
   </div>
 </template>

@@ -7,6 +7,7 @@ import router from './router'
 import store from './store'
 import VueI18n from 'vue-i18n'
 import VueCookies from 'vue-cookies'
+import './assets/fonts/iconfont.css'
 
 Vue.config.productionTip = false
 // 开启debug模式
