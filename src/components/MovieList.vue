@@ -15,8 +15,9 @@
 </template>
 
 <script>
-import Store from '../assets/Store'
+import Store from '../util/Store'
 import MovieItem from './MovieItem'
+import jsonData from '../assets/json/data.json'
 
 export default {
   name: 'MovieList',
@@ -27,9 +28,14 @@ export default {
     }
   },
   mounted () {
-    var movies = Store.state.movies
+    let movies = Store.state.movies
     // 缓存数据为空
     if (movies.length === 0) {
+      console.log('data by `import x from x` ', jsonData)
+      this.$http.get('./static/data.json')
+        .then(response => {
+          console.log('data by `$http.get` ', response.data)
+        })
       this.$http.jsonp('https://api.douban.com/v2/movie/top250?count=10', {}, {
         headers: {},
         emulateJSON: true
