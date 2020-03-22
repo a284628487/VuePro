@@ -18,3 +18,8 @@ this.$cookies.keys()
 4. refs & ref
 https://www.cnblogs.com/xumqfaith/p/7743387.html
 https://blog.csdn.net/qq_35410544/article/details/83621574
+
+5. axios
+https://www.cnblogs.com/yy136/p/9855039.html
+https://www.jianshu.com/p/d771bbc61dab
+http://www.axios-js.com/docs/

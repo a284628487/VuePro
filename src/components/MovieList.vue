@@ -32,30 +32,15 @@ export default {
     // 缓存数据为空
     if (movies.length === 0) {
       console.log('data by `import x from x` ', jsonData)
+      // 获取本地json文件
       this.$http.get('./static/data.json')
         .then(response => {
           console.log('data by `$http.get` ', response.data)
+        }, error => {
+          console.log('data by `$http.get` error ', error.status)
         })
-      this.$http.jsonp('https://api.douban.com/v2/movie/top250?count=10', {}, {
-        headers: {},
-        emulateJSON: true
-      }).then(function (response) {
-        this.movies = response.data.subjects
-        Store.setMovies(response.data.subjects)
-      }, function (response) {
-        // 这里是处理错误的回调
-        console.log('Error')
-        console.log(response)
-        let moviesArr = []
-        moviesArr.push({
-          title: '绝地求生'
-        })
-        moviesArr.push({
-          title: '生化危机'
-        })
-        this.movies = moviesArr
-        Store.setMovies(moviesArr)
-      })
+      // 获取电影列表
+      this.getMovies()
     } else {
       console.log('use cached movies')
       this.movies = movies
@@ -66,6 +51,29 @@ export default {
   },
   destroyed () {
     console.log('MovieList#Destroyed')
+  },
+  methods: {
+    getMovies () {
+      this.$http.jsonp('https://api.douban.com/v2/movie/top250?count=10', {}, {
+        headers: {},
+        emulateJSON: true
+      }).then(function (response) {
+        this.movies = response.data.subjects
+        Store.setMovies(response.data.subjects)
+      }, function (response) {
+        // 这里是处理错误的回调
+        console.log('getMovies', response.status)
+        let moviesArr = []
+        moviesArr.push({
+          title: '绝地求生'
+        })
+        moviesArr.push({
+          title: '生化危机'
+        })
+        this.movies = moviesArr
+        Store.setMovies(moviesArr)
+      })
+    }
   },
   components: {
     'v-MovieItem': MovieItem

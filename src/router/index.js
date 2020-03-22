@@ -6,6 +6,7 @@ import Home from '@/components/Home'
 import MovieList from '@/components/MovieList'
 import MovieName from '@/components/MovieName'
 import MovieContainer from '@/components/MovieContainer'
+import Network from '@/components/Network'
 
 Vue.use(Router)
 
@@ -35,6 +36,11 @@ export default new Router({
       path: '/helloworld',
       name: 'HelloWorld',
       component: HelloWorld
+    },
+    {
+      path: '/network',
+      name: 'Network',
+      component: Network
     }
   ]
 })

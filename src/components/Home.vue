@@ -18,6 +18,9 @@
     <div>
       <router-link to="/movielist">{{movie}}<span class="iconfont icon-down"></span></router-link>
     </div>
+    <div>
+      <router-link to="/network">Network<span class="iconfont icon-down"></span></router-link>
+    </div>
   </div>
 </template>
 

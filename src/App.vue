@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <keep-alive v-bind:exclude="['MovieContainer', 'MovieName', 'MovieItem']">
+    <keep-alive v-bind:exclude="['MovieContainer', 'MovieName', 'MovieItem', 'Network']">
       <router-view/>
     </keep-alive>
   </div>
