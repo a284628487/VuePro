@@ -7,6 +7,8 @@ import MovieList from '@/components/MovieList'
 import MovieName from '@/components/MovieName'
 import MovieContainer from '@/components/MovieContainer'
 import Network from '@/components/Network'
+import VueXState from '@/components/VueXState'
+import VueXGetters from '@/components/VueXGetters'
 
 Vue.use(Router)
 
@@ -41,6 +43,16 @@ export default new Router({
       path: '/network',
       name: 'Network',
       component: Network
+    },
+    {
+      path: '/vuexState',
+      name: 'VueXState',
+      component: VueXState
+    },
+    {
+      path: '/vuexGetters',
+      name: 'VueXGetters',
+      component: VueXGetters
     }
   ]
 })

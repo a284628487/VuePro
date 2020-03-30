@@ -2,7 +2,9 @@
   <div id="main">
     <div @click="divClick" :style="{color: authorColor}"> Written by {{ author }}</div>
     <div><span>{{$t('home.clickTime')}}</span>{{clickTimes}}</div>
-<!--    <div v-model="clickTimes"><span>{{$t('home.clickTime')}}</span>{{clickTimes}}</div>-->
+    <input v-model="clickTimes" type="text"/>
+    <div v-show="clickTimes % 2 === 0">点击了整数次</div>
+    <div v-show="clickTimes % 2 === 1">点击了奇数次</div>
     <h3>{{$t('home.userList')}}</h3>
     <ul>
       <li v-for="(item, index) in users" :key="'userKey' + index"
@@ -21,11 +23,16 @@
     <div>
       <router-link to="/network">Network<span class="iconfont icon-down"></span></router-link>
     </div>
+    <div>
+      <router-link to="/vuexState">VueX-mapState<span class="iconfont icon-down"></span></router-link>
+    </div>
+    <div>
+      <router-link to="/vuexGetters">VueX-mapGetters<span class="iconfont icon-down"></span></router-link>
+    </div>
   </div>
 </template>
 
 <script type="text/javascript">
-// import {mapGetters, mapState} from 'vuex'
 
 export default {
   name: 'Home',
@@ -106,9 +113,6 @@ export default {
         this.$store.commit('setClickTimes', newValue)
       }
     }
-    // ...mapGetters([
-    //   'clickTimes'
-    // ])
   }
 }
 </script>
@@ -128,5 +132,10 @@ export default {
 
   .double {
     color: chartreuse;
+  }
+
+  input {
+    border: #42b983 1px solid;
+    padding: 2px 4px;
   }
 </style>
