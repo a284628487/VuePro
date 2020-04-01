@@ -4,3 +4,4 @@ export const tasks = state => (id) => {
   return state.tasks.filter(task => parseInt(task.id) === id)
 }
 export const todoCount = state => state.todoCount + state.clickTimes
+export const userInfo = state => state.user

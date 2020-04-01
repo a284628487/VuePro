@@ -14,6 +14,10 @@ const state = {
       name: 'I am task 3'
     }
   ],
-  todoCount: 100
+  todoCount: 100,
+  user: {
+    age: 29,
+    name: 'ccf'
+  }
 }
 export default state

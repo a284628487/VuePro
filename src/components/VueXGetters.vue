@@ -32,19 +32,17 @@ export default {
     clickTimesCovert () {
       return this.$store.state.clickTimes % 2 === 0 ? '偶数次' : '奇数次'
     },
-    // 使用对象展开运算符将 getter 混入 computed 对象中
-    ...mapGetters({
-      clickTimes: 'clickTimes',
-      todo: 'todoCount'
-    })
     // 把 `this.todo` 映射为 `this.$store.getters.todoCount`
+    ...mapGetters({
+      todo: 'todoCount'
+    }),
+    // 使用对象展开运算符将 getter 混入 computed 对象中
+    ...mapGetters([
+      'clickTimes'
+    ])
   }
 }
 
-// ...mapGetters([
-//   'doneTodoCount',
-//   'anotherGetter',
-// ])
 </script>
 
 <style scoped>

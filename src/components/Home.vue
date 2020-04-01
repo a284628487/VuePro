@@ -29,6 +29,9 @@
     <div>
       <router-link to="/vuexGetters">VueX-mapGetters<span class="iconfont icon-down"></span></router-link>
     </div>
+    <div>
+      <router-link to="/vuexMutation">VueX-Mutation<span class="iconfont icon-down"></span></router-link>
+    </div>
   </div>
 </template>
 
